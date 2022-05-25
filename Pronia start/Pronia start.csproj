@@ -6,12 +6,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220525025551_test.cs" />
+    <Compile Remove="Migrations\20220525025551_test.Designer.cs" />
+    <Compile Remove="Migrations\20220525030013_CreatedPlantAndColorAndPlantImageAndSizes.cs" />
+    <Compile Remove="Migrations\20220525030013_CreatedPlantAndColorAndPlantImageAndSizes.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\ProniaAdmin\Data\" />
+    <Folder Include="Areas\ProniaAdmin\Models\" />
+    <Folder Include="wwwroot\Admin\" />
   </ItemGroup>
 
 </Project>
