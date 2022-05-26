@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GfyDuimzR+PbiaPcGUsexLy2c3jrIOFuAT8sCdHRc3l9lJQgyMRMpL/ZBDrOEleD3sMB6ANGnk1dbklc2DkA3w==",
+  "dgSpecHash": "bgBw9/G3KiuRpHBKO8VBRjFPXvF10uoEC7Dy5dh8qDdHPswYCRpEeL/g+BItI+B/+N0gYVYc8+H82eAaMXFrxw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\source\\repos\\Pronia start\\Pronia start\\Pronia start.csproj",
   "expectedPackageFiles": [
@@ -162,7 +162,9 @@
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512"
   ],
   "logs": []
 }
