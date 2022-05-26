@@ -38,16 +38,57 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
-
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            return Json(id);
+           Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            if (color == null) return NotFound();
+            return View(color);
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return Json(id);
+            Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            if (color == null) return NotFound();
+            return View(color);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Edit(int id, Color color)
+        {
+
+            Color existedColor = await context.Colors.FirstOrDefaultAsync(c=> c.Id == id);
+            if (existedColor == null) return NotFound();
+            if (id != color.Id) return BadRequest();
+
+            existedColor.Name = color.Name;
+
+
+            await context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            if (color == null) return NotFound();
+            return View(color);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteSize(int id)
+        {
+            Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            if (color == null) return NotFound();
+
+            context.Colors.Remove(color);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
