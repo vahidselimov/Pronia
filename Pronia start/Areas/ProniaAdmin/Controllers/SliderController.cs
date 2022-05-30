@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
+
 namespace Pronia_start.Areas.ProniaAdmin.Controllers
 {
     [Area("ProniaAdmin")]
@@ -70,7 +71,31 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
         }
 
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            Slider slider = await context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+            if (slider == null) return NotFound();
+            return View(slider);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteSize(int id)
+        {
+            Slider slider = await context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+            if (slider == null) return NotFound();
 
+            context.Sliders.Remove(slider);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            Slider slider = await context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+            if (slider== null) return NotFound();
+            return View(slider);
+        }
     }
 
 

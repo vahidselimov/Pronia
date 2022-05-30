@@ -12,17 +12,17 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
     [Area("ProniaAdmin")]
     public class ColorController : Controller
     {
-        
+
         private readonly AppDbContext context;
 
-        
+
         public ColorController(AppDbContext context)
         {
             this.context = context;
         }
         public async Task<IActionResult> Index()
         {
-           List<Pronia_start.Models.Color>colors=await context.Colors.ToListAsync();
+            List<Pronia_start.Models.Color> colors = await context.Colors.ToListAsync();
             return View(colors);
         }
         public IActionResult Create()
@@ -40,7 +40,7 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
-           Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
+            Color color = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
             if (color == null) return NotFound();
             return View(color);
         }
@@ -56,7 +56,7 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
         public async Task<IActionResult> Edit(int id, Color color)
         {
 
-            Color existedColor = await context.Colors.FirstOrDefaultAsync(c=> c.Id == id);
+            Color existedColor = await context.Colors.FirstOrDefaultAsync(c => c.Id == id);
             if (existedColor == null) return NotFound();
             if (id != color.Id) return BadRequest();
 
