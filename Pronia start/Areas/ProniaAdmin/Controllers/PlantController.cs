@@ -8,6 +8,7 @@ using Pronia_start.Utilities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+
 namespace Pronia_start.Areas.ProniaAdmin.Controllers
 {
     [Area("ProniaAdmin")]
@@ -84,7 +85,42 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
             await context.Plants.AddAsync(plant);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
+
         }
+        public async Task<IActionResult> Detail(int id)
+        {
+           Plant plant = await context.Plants.Include(p=>p.PlantImages).FirstOrDefaultAsync(c => c.Id == id);
+            if (plant == null) return NotFound();
+            return View(plant);
+
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+           Plant plant = await context.Plants.FirstOrDefaultAsync(c => c.Id == id);
+            
+            if (plant == null) return NotFound();
+            return View(plant);
+        }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteSize(int id)
+        {
+            Plant plant = await context.Plants.FirstOrDefaultAsync(c => c.Id == id);
+            Plant plant1 = await context.Plants.Include(p => p.PlantImages).FirstOrDefaultAsync(c => c.Id == id);
+            if (plant == null) return NotFound();
+            if (plant1 == null) return NotFound();
+            
+            context.Plants.Remove(plant);
+            context.Plants.Remove(plant1);
+
+
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
 
     }
 }

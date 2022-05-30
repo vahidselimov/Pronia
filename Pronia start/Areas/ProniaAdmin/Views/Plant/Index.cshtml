@@ -8,14 +8,14 @@
         <thead>
             <tr>
                 <th>
-                   Name 
+                   Image
                 </th>
                 <th>
-                 Price
+                 Name
                 </th>
              
                 <th>
-                   Image
+                   Price
                 </th>
 
                 <th>
@@ -32,7 +32,7 @@
             {
                 <tr>
                     <td>
-                        <img style="width: 150px; height:90px" src="~/assets/images/website-images/@plant.PlantImages.FirstOrDefault(i=>i.IsMain==true)" />
+                        <img style="width: 150px; height:90px" src="~/assets/images/website-images/@plant.PlantImages.FirstOrDefault(i=>i.IsMain==true).ImagePath" />
                     </td>
                     <td>
                         @plant.Name
