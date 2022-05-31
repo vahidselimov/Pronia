@@ -1,4 +1,7 @@
-﻿namespace Pronia_start.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace Pronia_start.Models
 {
     public class PlantImage
     {
@@ -9,5 +12,9 @@
         public int PlantId { get; set; }
         public Plant Plant { get; set; }
 
+        internal List<PlantImage> Tolist()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

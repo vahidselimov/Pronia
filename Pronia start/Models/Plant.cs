@@ -7,7 +7,9 @@ namespace Pronia_start.Models
 {
     public class Plant
     {
+
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
         [Column(TypeName = "decimal(6,2)")]
         public decimal Price { get; set; }
@@ -26,10 +28,16 @@ namespace Pronia_start.Models
         public int? SizeId { get; set; }
         public Size Size { get; set; }
         public List<PlantImage> PlantImages { get; set; }
+        public List<PlantCategory> PlantCategories { get; set; }
         [NotMapped]
         public IFormFile MainImage { get; set; }
         [NotMapped]
-        public List<IFormFile>AnotherImage { get; set; }
+        public List<IFormFile> AnotherImage { get; set; }
+        [NotMapped]
+        public List<int> ImageIds { get; set; }
+        [NotMapped]
+        public List<int> CategoryIds { get; set; }
+        public int Imgmainid { get; set; }
 
     }
 }
