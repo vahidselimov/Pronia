@@ -38,7 +38,9 @@
     </div>
     <div>
        * <label class="mb-3">Plant Categories:</label><br />
+      
         <select class="form-control" asp-for="CategoryIds">
+            @*@Model.PlantCategories.Count;*@
             @foreach (Category category in ViewBag.Categories)
             {
                 if (Model.PlantCategories.FirstOrDefault(pc => pc.CategoryId == category.Id) != null)

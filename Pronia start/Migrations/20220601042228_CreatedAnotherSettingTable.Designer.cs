@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pronia_start.DAL;
 
 namespace Pronia_start.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220601042228_CreatedAnotherSettingTable")]
+    partial class CreatedAnotherSettingTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,6 +28,9 @@ namespace Pronia_start.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AnotherSettingId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Key")
                         .HasColumnType("nvarchar(450)");
 
@@ -34,11 +39,13 @@ namespace Pronia_start.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AnotherSettingId");
+
                     b.HasIndex("Key")
                         .IsUnique()
                         .HasFilter("[Key] IS NOT NULL");
 
-                    b.ToTable("anotherSettings");
+                    b.ToTable("AnotherSetting");
                 });
 
             modelBuilder.Entity("Pronia_start.Models.Category", b =>
@@ -283,6 +290,13 @@ namespace Pronia_start.Migrations
                     b.ToTable("SocialMedias");
                 });
 
+            modelBuilder.Entity("Pronia_start.Models.AnotherSetting", b =>
+                {
+                    b.HasOne("Pronia_start.Models.AnotherSetting", null)
+                        .WithMany("anotherSettings")
+                        .HasForeignKey("AnotherSettingId");
+                });
+
             modelBuilder.Entity("Pronia_start.Models.Plant", b =>
                 {
                     b.HasOne("Pronia_start.Models.Color", "Color")
@@ -321,7 +335,7 @@ namespace Pronia_start.Migrations
             modelBuilder.Entity("Pronia_start.Models.SocialMedia", b =>
                 {
                     b.HasOne("Pronia_start.Models.AnotherSetting", "anotherSetting")
-                        .WithMany("socialMedias")
+                        .WithMany()
                         .HasForeignKey("AnotherSettingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

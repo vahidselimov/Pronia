@@ -129,7 +129,7 @@ namespace Pronia_start.Areas.ProniaAdmin.Controllers
             ViewBag.Categories = await context.Categories.ToListAsync();
 
 
-            Plant plant = await context.Plants.Include(p=>p.PlantImages).FirstOrDefaultAsync(c => c.Id == id);
+            Plant plant = await context.Plants.Include(p=>p.PlantImages).Include(p=>p.PlantCategories).FirstOrDefaultAsync(c => c.Id == id);
             if (plant == null) return NotFound();
            
             return View(plant);

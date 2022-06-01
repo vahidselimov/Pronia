@@ -9,6 +9,12 @@ namespace Pronia_start.DAL
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<AnotherSetting>()
+                .HasIndex(u => u.Key)
+                .IsUnique();
+        }
 
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Color> Colors { get; set; }
@@ -17,5 +23,8 @@ namespace Pronia_start.DAL
         public DbSet<Size> Sizes { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<PlantCategory> PlantCategories { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<AnotherSetting> anotherSettings { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }
