@@ -1,4 +1,5 @@
-﻿@model Setting
+﻿@model HomeVM
+
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -56,9 +57,13 @@
                         <div class="col-lg-3">
                             <div class="footer-widget-item">
                                 <div class="footer-widget-logo">
-                                    <a href="index.html">
-                                        <img src="~/assets/images/logo/@Model.FooterLogo" alt="Logo" />
+                                      @foreach (Setting item in Model.Settings)
+                                      {
+                                                                              <a href="index.html">
+                                        <img src="~/assets/images/logo/@item.HeaderLogo" alt="Logo" />
                                     </a>
+                                          
+                                      }
                                 </div>
                                 <p class="footer-widget-desc">
                                     Lorem ipsum dolor sit amet, consec adipisl elit, sed do
@@ -68,7 +73,9 @@
                                 </p>
                                 <div class="social-link with-border">
                                     <ul>
-                                        <li>
+                                       @foreach (SocialMedia item in Model.SocialMedias)
+                                      {
+                                           <li>
                                             <a href="#"
                                                data-tippy=""
                                                data-tippy-inertia="true"
@@ -76,42 +83,11 @@
                                                data-tippy-delay="50"
                                                data-tippy-arrow="true"
                                                data-tippy-theme="sharpborder">
-                                                <i class="fa fa-facebook"></i>
+                                                <i class="@item.Icon"></i>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#"
-                                               data-tippy="Twitter"
-                                               data-tippy-inertia="true"
-                                               data-tippy-animation="shift-away"
-                                               data-tippy-delay="50"
-                                               data-tippy-arrow="true"
-                                               data-tippy-theme="sharpborder">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                               data-tippy="Pinterest"
-                                               data-tippy-inertia="true"
-                                               data-tippy-animation="shift-away"
-                                               data-tippy-delay="50"
-                                               data-tippy-arrow="true"
-                                               data-tippy-theme="sharpborder">
-                                                <i class="fa fa-pinterest"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"
-                                               data-tippy="Dribbble"
-                                               data-tippy-inertia="true"
-                                               data-tippy-animation="shift-away"
-                                               data-tippy-delay="50"
-                                               data-tippy-arrow="true"
-                                               data-tippy-theme="sharpborder">
-                                                <i class="fa fa-dribbble"></i>
-                                            </a>
-                                        </li>
+                                      }
+                                        
                                     </ul>
                                 </div>
                             </div>
