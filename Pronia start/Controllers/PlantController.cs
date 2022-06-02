@@ -28,14 +28,15 @@ namespace Pronia_start.Controllers
             if (string.IsNullOrEmpty(basketStr))
             {
                 basket = new BasketVM();
-                BasketItemVM item = new BasketItemVM
+
+                BaksetItemVM item=new BaksetItemVM
                 {
 
                     Plant = plant,
                     Count = 1
                 };
-                basket.baksetItems.Add(item);
-                basket.TotalPrice = item.Plant.Price;
+                basket.BaksetItems.Add(item);
+                basket.TotalPrice =item.Plant.Id;
                 basket.Count = 1;
                 itemsStr = JsonConvert.SerializeObject(basket);
 
@@ -44,15 +45,15 @@ namespace Pronia_start.Controllers
             {
                 basket = JsonConvert.DeserializeObject<BasketVM>(basketStr);
 
-                BasketItemVM existedItem = basket.baksetItems.FirstOrDefault(i => i.Plant.Id == id);
+                BaksetItemVM existedItem = basket.BaksetItems.FirstOrDefault(i => i.Plant.Id == id);
                 if (existedItem == null)
                 {
-                    BasketItemVM item = new BasketItemVM
+                    BaksetItemVM item = new BaksetItemVM
                     {
                         Plant = plant,
                         Count = 1
                     };
-                    basket.baksetItems.Add(item);
+                    basket.BaksetItems.Add(item);
                 }
                 else
                 {
@@ -61,12 +62,12 @@ namespace Pronia_start.Controllers
 
                 decimal total = default;
 
-                foreach (BasketItemVM item in basket.baksetItems)
+                foreach (BaksetItemVM item in basket.BaksetItems)
                 {
                     total += item.Plant.Price * item.Count;
                 }
                 basket.TotalPrice = total;
-                basket.Count = basket.baksetItems.Count;
+                basket.Count = basket.BaksetItems.Count;
                 itemsStr = JsonConvert.SerializeObject(basket);
 
             }

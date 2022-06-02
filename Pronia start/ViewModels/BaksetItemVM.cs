@@ -4,7 +4,7 @@ namespace Pronia_start.ViewModels
 {
     public class BaksetItemVM
     {
-        public Plant plant { get; set; }
+        public Plant Plant { get; set; }
        
         public int Count { get; set; }
     }
