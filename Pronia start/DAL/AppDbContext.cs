@@ -24,7 +24,7 @@ namespace Pronia_start.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<PlantCategory> PlantCategories { get; set; }
         public DbSet<Setting> Settings { get; set; }
-        public DbSet<AnotherSetting> anotherSettings { get; set; }
+        public DbSet<AnotherSetting> AnotherSettings { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

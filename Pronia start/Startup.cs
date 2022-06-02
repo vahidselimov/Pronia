@@ -52,7 +52,7 @@ namespace Pronia_start
                                  pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}"
                                );
 
-                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}");
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }

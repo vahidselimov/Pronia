@@ -2,7 +2,7 @@
 
 namespace Pronia_start.Migrations
 {
-    public partial class SocialMediasUp : Migration
+    public partial class addAnotherSetting : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,45 +28,60 @@ namespace Pronia_start.Migrations
 
             migrationBuilder.RenameTable(
                 name: "AnotherSetting",
-                newName: "anotherSettings");
+                newName: "AnotherSettings");
 
             migrationBuilder.RenameIndex(
                 name: "IX_AnotherSetting_Key",
-                table: "anotherSettings",
-                newName: "IX_anotherSettings_Key");
+                table: "AnotherSettings",
+                newName: "IX_AnotherSettings_Key");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "AnotherSettingId",
+                table: "SocialMedias",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "int");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_anotherSettings",
-                table: "anotherSettings",
+                name: "PK_AnotherSettings",
+                table: "AnotherSettings",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_SocialMedias_anotherSettings_AnotherSettingId",
+                name: "FK_SocialMedias_AnotherSettings_AnotherSettingId",
                 table: "SocialMedias",
                 column: "AnotherSettingId",
-                principalTable: "anotherSettings",
+                principalTable: "AnotherSettings",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_SocialMedias_anotherSettings_AnotherSettingId",
+                name: "FK_SocialMedias_AnotherSettings_AnotherSettingId",
                 table: "SocialMedias");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_anotherSettings",
-                table: "anotherSettings");
+                name: "PK_AnotherSettings",
+                table: "AnotherSettings");
 
             migrationBuilder.RenameTable(
-                name: "anotherSettings",
+                name: "AnotherSettings",
                 newName: "AnotherSetting");
 
             migrationBuilder.RenameIndex(
-                name: "IX_anotherSettings_Key",
+                name: "IX_AnotherSettings_Key",
                 table: "AnotherSetting",
                 newName: "IX_AnotherSetting_Key");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "AnotherSettingId",
+                table: "SocialMedias",
+                type: "int",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "AnotherSettingId",

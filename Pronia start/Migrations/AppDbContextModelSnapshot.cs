@@ -38,7 +38,7 @@ namespace Pronia_start.Migrations
                         .IsUnique()
                         .HasFilter("[Key] IS NOT NULL");
 
-                    b.ToTable("anotherSettings");
+                    b.ToTable("AnotherSettings");
                 });
 
             modelBuilder.Entity("Pronia_start.Models.Category", b =>
@@ -259,7 +259,7 @@ namespace Pronia_start.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AnotherSettingId")
+                    b.Property<int?>("AnotherSettingId")
                         .HasColumnType("int");
 
                     b.Property<string>("Icon")
@@ -320,11 +320,9 @@ namespace Pronia_start.Migrations
 
             modelBuilder.Entity("Pronia_start.Models.SocialMedia", b =>
                 {
-                    b.HasOne("Pronia_start.Models.AnotherSetting", "anotherSetting")
-                        .WithMany("socialMedias")
-                        .HasForeignKey("AnotherSettingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Pronia_start.Models.AnotherSetting", "AnotherSetting")
+                        .WithMany("SocialMedias")
+                        .HasForeignKey("AnotherSettingId");
 
                     b.HasOne("Pronia_start.Models.Setting", "Settings")
                         .WithMany("SocialMedias")

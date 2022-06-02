@@ -10,6 +10,14 @@
     <Compile Remove="Migrations\20220525025551_test.Designer.cs" />
     <Compile Remove="Migrations\20220525030013_CreatedPlantAndColorAndPlantImageAndSizes.cs" />
     <Compile Remove="Migrations\20220525030013_CreatedPlantAndColorAndPlantImageAndSizes.Designer.cs" />
+    <Compile Remove="Migrations\20220601043045_SocialMediasUp.cs" />
+    <Compile Remove="Migrations\20220601043045_SocialMediasUp.Designer.cs" />
+    <Compile Remove="Migrations\20220601105613_addAnotherSetting.cs" />
+    <Compile Remove="Migrations\20220601105613_addAnotherSetting.Designer.cs" />
+    <Compile Remove="Migrations\20220601105714_addAnotherSetting.cs" />
+    <Compile Remove="Migrations\20220601105714_addAnotherSetting.Designer.cs" />
+    <Compile Remove="Migrations\20220601110052_addAnotherSetting.cs" />
+    <Compile Remove="Migrations\20220601110052_addAnotherSetting.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

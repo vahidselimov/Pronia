@@ -8,7 +8,7 @@
         public string Url { get; set; }
         public int SettingId { get; set; }
         public Setting Settings { get; set; }
-        public AnotherSetting anotherSetting { get; set; }
-        public int AnotherSettingId { get; set; }
+        public AnotherSetting AnotherSetting { get; set; }
+        public int? AnotherSettingId { get; set; }
     }
 }
