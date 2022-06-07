@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pronia_start.Models;
 
 namespace Pronia_start.DAL
 {
-    public class AppDbContext:DbContext
+    public class  AppDbContext:IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
         {
@@ -14,6 +16,7 @@ namespace Pronia_start.DAL
             builder.Entity<AnotherSetting>()
                 .HasIndex(u => u.Key)
                 .IsUnique();
+            base.OnModelCreating(builder);
         }
 
         public DbSet<Slider> Sliders { get; set; }

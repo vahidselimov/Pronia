@@ -169,3 +169,9 @@ C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Raz
 C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Delete.cshtml.g.cs
 C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Razor\Areas\ProniaAdmin\Views\Plant\Edit.cshtml.g.cs
 C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Razor\Views\shared\Component\Footer\Default.cshtml.g.cs
+C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

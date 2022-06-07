@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Pronia_start.DAL;
 using Pronia_start.Models;
 using Pronia_start.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,12 +25,13 @@ namespace Pronia_start.Services
             return await context.Settings.FirstOrDefaultAsync();
 
         }
-        public BasketVM GetBasket()
+        public List<BasketCookItemVM> GetBasket()
         {
             string basketStr = httpContext.HttpContext.Request.Cookies["Basket"];
             if (!string.IsNullOrEmpty(basketStr))
             {
-                BasketVM basketData = JsonConvert.DeserializeObject<BasketVM>(basketStr);
+                //BasketVM basketData = JsonConvert.DeserializeObject<BasketVM>(basketStr);
+                List<BasketCookItemVM> basketData = JsonConvert.DeserializeObject<List<BasketCookItemVM>>(basketStr);
                 return basketData;
 
             }

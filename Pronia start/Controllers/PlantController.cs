@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Pronia_start.DAL;
 using Pronia_start.Models;
 using Pronia_start.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,56 +24,67 @@ namespace Pronia_start.Controllers
             Plant plant = await context.Plants.FirstOrDefaultAsync(p => p.Id == id);
             if (plant == null) return NotFound();
             string basketStr = HttpContext.Request.Cookies["Basket"];
-            BasketVM basket;
-            string itemsStr;
+            //BasketVM basket;
+            //string itemsStr;
+            List<BasketCookItemVM> baskets;
             if (string.IsNullOrEmpty(basketStr))
             {
-                basket = new BasketVM();
-
-                BaksetItemVM item=new BaksetItemVM
+                baskets = new List<BasketCookItemVM>();
+                BasketCookItemVM basketCook = new BasketCookItemVM
                 {
+                    Id = plant.Id,
+                    Count=1
 
-                    Plant = plant,
-                    Count = 1
                 };
-                basket.BaksetItems.Add(item);
-                basket.TotalPrice =item.Plant.Id;
-                basket.Count = 1;
-                itemsStr = JsonConvert.SerializeObject(basket);
+                //BaksetItemVM item=new BaksetItemVM
+                //{
+
+                //    Plant = plant,
+                //    Count = 1
+                //};
+                baskets.Add(basketCook);
+                //basket.BaksetItems.Add(item);
+                //basket.TotalPrice =item.Plant.Id;
+                //basket.Count = 1;
+                basketStr = JsonConvert.SerializeObject(baskets);
 
             }
             else
             {
-                basket = JsonConvert.DeserializeObject<BasketVM>(basketStr);
+                //basket = JsonConvert.DeserializeObject<BasketVM>(basketStr);
+                baskets = JsonConvert.DeserializeObject<List<BasketCookItemVM>>(basketStr);
 
-                BaksetItemVM existedItem = basket.BaksetItems.FirstOrDefault(i => i.Plant.Id == id);
-                if (existedItem == null)
+                //BaksetItemVM existedItem = basket.BaksetItems.FirstOrDefault(i => i.Plant.Id == id);
+                BasketCookItemVM basketCook = baskets.FirstOrDefault(c => c.Id == plant.Id);
+                if (basketCook == null)
                 {
-                    BaksetItemVM item = new BaksetItemVM
+                    BasketCookItemVM cookItemVM = new BasketCookItemVM
                     {
-                        Plant = plant,
+                        Id = plant.Id,
                         Count = 1
                     };
-                    basket.BaksetItems.Add(item);
+                    //basket.BaksetItems.Add(item);
+                    baskets.Add(cookItemVM);
+                  
                 }
                 else
                 {
-                    existedItem.Count++;
+                    basketCook.Count++;
                 }
 
                 decimal total = default;
 
-                foreach (BaksetItemVM item in basket.BaksetItems)
-                {
-                    total += item.Plant.Price * item.Count;
-                }
-                basket.TotalPrice = total;
-                basket.Count = basket.BaksetItems.Count;
-                itemsStr = JsonConvert.SerializeObject(basket);
+                //foreach (BasketCookItemVM item in baskets)
+                //{
+                //    //total += item.Plant.Price * item.Count;
+                //}
+                //basket.TotalPrice = total;
+                //basket.Count = basket.BaksetItems.Count;
+                basketStr = JsonConvert.SerializeObject(baskets);
 
             }
 
-            HttpContext.Response.Cookies.Append("Basket", itemsStr);
+            HttpContext.Response.Cookies.Append("Basket", basketStr);
             return RedirectToAction("Index", "Home");
         }
 

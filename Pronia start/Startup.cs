@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pronia_start.DAL;
+using Pronia_start.Models;
 using Pronia_start.Services;
 using System;
 using System.Collections.Generic;
@@ -33,6 +35,22 @@ namespace Pronia_start
                 opt.UseSqlServer(configuration.GetConnectionString("default"));
             });
             services.AddHttpContextAccessor();
+            services.AddIdentity<IdentityUser, IdentityRole>(option =>
+            {
+                option.Password.RequireDigit = true;
+                option.Password.RequireLowercase = true;
+                option.Password.RequiredLength = 8;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Lockout.MaxFailedAccessAttempts = 3;
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                option.Lockout.AllowedForNewUsers = true;
+                option.SignIn.RequireConfirmedEmail = false;
+                option.User.AllowedUserNameCharacters = "qwertyuiopasdfghjklzxcvbnm_1234567890";
+
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,8 +70,9 @@ namespace Pronia_start
                                  name: "areas",
                                  pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}"
                                );
-
+                
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=account}/{action=register}/{id?}");
             });
 
         }
