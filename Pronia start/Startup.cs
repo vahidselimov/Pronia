@@ -35,7 +35,7 @@ namespace Pronia_start
                 opt.UseSqlServer(configuration.GetConnectionString("default"));
             });
             services.AddHttpContextAccessor();
-            services.AddIdentity<IdentityUser, IdentityRole>(option =>
+            services.AddIdentity<AppUser, IdentityRole>(option =>
             {
                 option.Password.RequireDigit = true;
                 option.Password.RequireLowercase = true;

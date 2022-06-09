@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\ProniaAdmin\Data\" />
-    <Folder Include="Areas\ProniaAdmin\Models\" />
     <Folder Include="wwwroot\Admin\" />
   </ItemGroup>
 

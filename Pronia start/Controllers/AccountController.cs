@@ -14,7 +14,11 @@ namespace Pronia_start.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Register(RegisterVM register)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }
