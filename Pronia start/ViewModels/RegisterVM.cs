@@ -9,6 +9,8 @@ namespace Pronia_start.ViewModels
         public string FirstName { get; set; }
         [Required,StringLength(maximumLength:(30))]
         public string LastName { get; set; }
+        [Required, StringLength(maximumLength: 15)]
+        public string UserName { get; set; }
         [Required,DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required, DataType(DataType.Password)]

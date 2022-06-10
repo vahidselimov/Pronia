@@ -1,4 +1,4 @@
-﻿@model HomeVM
+﻿@model RegisterVM
 @{
 
     ViewData["Title"] = "Register";
@@ -63,25 +63,32 @@
                 <div class="container">
                     <div class="row justify-content-between">
                         <div class="col-lg-6 pt-5 pt-lg-0">
-                            <form action="#">
+                            <form method="post">
+                                 <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
                                 <div class="login-form">
                                     <h4 class="login-title">Register</h4>
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <label>First Name</label>
-                                            <input asp-for="FirstName" placeholder="Firstname" /><br />
-                                            <span asp-validation-for="Firstname" class="text-danger"></span>
+                                            <input asp-for="FirstName" placeholder="FirstName" /><br />
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <label>Last Name</label>
                                             <input asp-for="LastName" placeholder="Last Name" /><br />
-                                            <span asp-validation-for="Lastname" class="text-danger"></span>
+                                            <span asp-validation-for="LastName" class="text-danger"></span>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label>Email Address*</label>
                                             <input asp-for="Email" placeholder="Email Address" /><br />
                                             <span asp-validation-for="Email" class="text-danger"></span>
                                         </div>
+                                           <div class="col-md-6">
+                                            <label>*UserName</label>
+                                            <input asp-for="UserName" placeholder="UserName" /><br />
+                                            <span asp-validation-for="UserName" class="text-danger"></span>
+                                        </div>
+
                                         <div class="col-md-6">
                                             <label>Password</label>
                                             <input asp-for="Password" placeholder="Password" /><br />

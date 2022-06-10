@@ -63,7 +63,8 @@ namespace Pronia_start
 
             app.UseRouting();
             app.UseStaticFiles();
-
+            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

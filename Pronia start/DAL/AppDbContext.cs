@@ -5,7 +5,7 @@ using Pronia_start.Models;
 
 namespace Pronia_start.DAL
 {
-    public class  AppDbContext:IdentityDbContext<Pronia_start.Models.AppUser>
+    public class  AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext>options):base(options)
         {
@@ -29,6 +29,6 @@ namespace Pronia_start.DAL
         public DbSet<Setting> Settings { get; set; }
         public DbSet<AnotherSetting> AnotherSettings { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
-        public DbSet<AppUser> AppUsers { get; set; }
+    
     }
 }

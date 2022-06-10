@@ -175,3 +175,4 @@ C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Mic
 C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Asus\source\repos\Pronia start\Pronia start\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Asus\source\repos\Pronia start\Pronia start\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
